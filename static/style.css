@@ -59,7 +59,7 @@ width: 21px;
 display: inline-block;
 transition : opacity;
 opacity: 1;
-animation: hey 1s  infinite ;
+animation: hey 1.5s   infinite ;
 }
 @keyframes hey
 {
