@@ -26,7 +26,7 @@ nav{
 }
 
 nav ul a,nav ul a:focus::after{
-    color:white !important;
+    color:gray !important;
     font-weight: 400 !important;
     transition-property: color,font-weight !important;
     transition-duration: .5s !important; 
@@ -35,7 +35,7 @@ nav ul a,nav ul a:focus::after{
 
 nav ul a:hover{
     background-color: rgba(0, 0, 0, 0) !important;
-    color:gray !important;
+    color:white !important;
     font-weight: 700 !important;
 }
 
@@ -45,7 +45,7 @@ nav ul a:hover{
 .middleContainer
 {
     height: 50%;
-    background-color: white;
+    background-color: gray;
     font-size: 32px;
 }
 .parallax{
@@ -68,3 +68,17 @@ animation: hey 1.5s   infinite ;
     100% {opacity: 1;}
 
 }
+.formulaire
+{
+    text-align: center;
+    margin-top: 1.5% !important;
+    padding:1%;
+    height: 40% !important;
+    
+}
+.modal {
+     width: 100% !important ;
+    height: 90% !important ; 
+    max-height: 100% !important;
+    position: absolute ; 
+    }  

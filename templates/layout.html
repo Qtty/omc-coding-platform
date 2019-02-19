@@ -1,3 +1,4 @@
+{%from 'macros.html' import form%}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,35 +7,54 @@
     <title>Open Minds Club - {{Title}}</title>
     <link rel="stylesheet" type="text/css"  href="{{url_for('static',filename='style.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-     <!-- Compiled and minified CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-     <!-- Compiled and minified JavaScript -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-             
-
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
+
 <body>
-        
+         <!--register box -->
+   <div id="modal1" class="modal modal-fixed-footer">
+        <form action="{{url_for('index')}}" method="POST" class="col s12"></form>
+        <div class="modal-content">
+            <div class ="row s6">
+            <img src={{url_for('static',filename="img/logo.png")}} alt="Omc Logo" class="col s1 "><h1 class="col ">Registration</h1>
+            </div>
+            {{form(info)}}
+        </div>
+
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
+            <input type="submit" class=" waves-effect waves-green btn-flat" value="Confirmer">
+        </div>
+    </form>
+    </div> 
    <header>
+       <!--registred popUp-->
+       
        <!--Header-->
        <nav class="transparent nav-wraper z-depth-0">
 
-        <a href="#" class="brand-logo center"><img src="{{url_for('static',filename="/img/logo.png")}}" alt="OMC Chalenges"></a>
+        <a href="#" class="brand-logo center"><img src="{{url_for('static',filename="/img/logo.png")}}" alt="OMC Challenges"></a>
         <a href="#" class="sidenav-trigger right" data-target="mobile-links">
             <i class="material-icons">menu</i>
           </a>
 
           <ul class="right hide-on-med-and-down">
               <li><a href="http://openmindsclub.net/" class="waves-effect">home</a></li>
-              <li><a href="#">chalenges</a></li>
+              <li><a href="#">challenges</a></li>
               <li><a href="#">leadbord</a></li>
               {% if 'username' in session %}
               <li class="userFun"><a href="#" >User</a></li>
               {% else%}
-              <li class="userFun"><a hrdef="#" >Register</a></li>
-              <li class="userFun"><a hrdef="#" >Login</a></li>
+              <li class="userFun"><a class=" modal-trigger" onclick="$('#modal1').modal('open');" >Register</a></li>
+              <li class="userFun"><a href="#" >Login</a></li>
 
               {%endif%}
           </ul>
@@ -48,21 +68,29 @@
            <div class="container">
                <div class="row">
                    <div class="col s12 white-text">
-                       <h2 class="white-text">[ <span class="blue-text text-darken-2">OMC@</span>challenges ~]$ Build  website <span class="whiteCursor"></span> </h2>
+                       <h2 class="white-text">[ <span class="blue-text text-darken-2">OMC@</span>challenges ~]$ Build  website<span class="whiteCursor"></span> </h2>
                    </div>
                </div>
            </div>
             <div class="parallax"><img src="{{url_for('static',filename="img/wallpaper2.jpg")}}" style="transform: translate3d(-50%, 383.287px, 0px); opacity: 1;"></div>
        </div>
        {%endblock%}
-   </header>
-   <div class="middleContainer">
+    </header>
+    {%block middleContainer%}
+   <div class="middleContainer">  
     <h1>lorem Ipsum</h1>
-    <p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-   </div>
+    <p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>  
+</div>
+{%endblock%}   
    <footer>
 
    </footer>
 </body>
 <script type="text/javascript" src={{url_for('static',filename="script/parallax.js")}}></script>
+<script>
+
+$(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
 </html>
