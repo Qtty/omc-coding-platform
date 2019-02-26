@@ -21,7 +21,8 @@
 <body>
          <!--register box -->
    <div id="modal1" class="modal modal-fixed-footer">
-        <form action="{{url_for('index')}}" method="POST" class="col s12"></form>
+        <form action="{{url_for('process')}}" method="POST" class="col s12" id="register">
+            <label style="display:hide">wooow</label>
         <div class="modal-content">
             <div class ="row s6">
             <img src={{url_for('static',filename="img/logo.png")}} alt="Omc Logo" class="col s1 "><h1 class="col ">Registration</h1>
@@ -31,13 +32,13 @@
 
         <div class="modal-footer">
             <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
-            <input type="submit" class=" waves-effect waves-green btn-flat" value="Confirmer">
+            <a class=" waves-effect waves-green btn-flat" value="Confirmer" id="btn">btn</a>
         </div>
     </form>
-    </div> 
+    </div>
    <header>
        <!--registred popUp-->
-       
+
        <!--Header-->
        <nav class="transparent nav-wraper z-depth-0">
 
@@ -45,7 +46,7 @@
         <a href="#" class="sidenav-trigger right" data-target="mobile-links">
             <i class="material-icons">menu</i>
           </a>
-
+          <!--Nav bar-->
           <ul class="right hide-on-med-and-down">
               <li><a href="http://openmindsclub.net/" class="waves-effect">home</a></li>
               <li><a href="#">challenges</a></li>
@@ -53,15 +54,16 @@
               {% if 'username' in session %}
               <li class="userFun"><a href="#" >User</a></li>
               {% else%}
+              <!--Trigger the modal ye3ni le rectangle blanc hedek-->
               <li class="userFun"><a class=" modal-trigger" onclick="$('#modal1').modal('open');" >Register</a></li>
               <li class="userFun"><a href="#" >Login</a></li>
 
               {%endif%}
           </ul>
        </nav>
-       
-       <!--Content-->
-      
+
+       <!--Top Brush-->
+
        {%block topContainer %}
 
        <div class="parallax-container center valign-wrapper">
@@ -76,21 +78,40 @@
        </div>
        {%endblock%}
     </header>
+
+    <!--main content-->
     {%block middleContainer%}
-   <div class="middleContainer">  
+   <div class="middleContainer">
     <h1>lorem Ipsum</h1>
-    <p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>  
-</div>
-{%endblock%}   
+    <p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="input-field col s12">
+      <select>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      <label>Materialize Select</label>
+    </div>
+{%endblock%}
+
+<!--FOOT COVER-->
    <footer>
 
    </footer>
 </body>
+<!--Scripts-->
 <script type="text/javascript" src={{url_for('static',filename="script/parallax.js")}}></script>
+<script type="text/javascript" src={{url_for('static',filename="script/forms.js")}}></script>
 <script>
-
 $(document).ready(function(){
     $('.modal').modal();
   });
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
+<script>
+
 </script>
 </html>

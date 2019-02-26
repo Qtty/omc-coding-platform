@@ -13,10 +13,12 @@
          {%else %}  
                 {% if inp in ["First name","Last name"] %}
                 <div class="input-field col s6">
+                        <input type='text' name="{{inp}}" id="" class="validate"><label for={{inp}}>{{inp}}</label>
                 {%else%}
                 <div class="input-field col s12">
+                        <input type='text' name="{{inp}}" id="{{inp}}" class="validate"><label for={{inp}}>{{inp}}</label>
                 {%endif%}
-            <input type='text' name="{{inp}}" id="" class="validate"><label for={{inp}}>{{inp}}</label>
+            
         {%endif%}
         </div>
     {%endfor%}
