@@ -1,4 +1,4 @@
-  var button=document.getElementById('btn');
+var button=document.getElementById('btn');
 
 
 console.log(button)
@@ -12,4 +12,4 @@ button.addEventListener("click",function(){
 
           //console.log(formulaire);
     }
-    ourRequest.send(formData);})
+ourRequest.send(formData);})

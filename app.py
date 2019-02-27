@@ -26,7 +26,7 @@ def index(wv=''):
 def register():
         global info
         if request.method=='POST':
-		return redirect(url_for("index"))
+            return redirect(url_for("index"))
         return render_template("register.html",info=info)
 
 
@@ -38,19 +38,29 @@ def process():
         data=request.form
         print(data)
         if users.find_one({'username':data['username']}):
-			return """{"msg":"error","type":"username already exist"}"""
+            return """{"msg":"error","type":"username already exist"}"""
         if users.find_one({'email':data['email']}) :
-			return """{"msg":"error","type":"email already exist"}"""
+            return """{"msg":"error","type":"email already exist"}"""
         if users.find_one({'matricule':data['matricule']}) :
-			return """{"msg":"error","type":"matricule already exist"}"""
+            return """{"msg":"error","type":"matricule already exist"}"""
         for i in info:
             user[i]=data[i]
         user["admin"]='False'
         user["date"] = datetime.utcfromtimestamp(int(time())).strftime('%Y-%m-%d %H:%M:%S')
         users.insert(user)
-        return """{"msg":"success","type":"registered"}"""
+    return """{"msg":"success","type":"registered"}"""
 
-
+@app.route("/challenges",methods=["GET","POST"])
+def challenge():
+    if request.method == "POST":
+        x = request.form["code"]
+        with open("/tmp/code.py","w") as f:
+            f.write(x)
+        os.system("(cat /tmp/testcase | python /tmp/code.py) > /tmp/result")
+        with open("/tmp/result","r") as f:
+            res=f.read()
+        return render_template("challenge.html",res=res)
+    return render_template("challenge.html",res=None)
 
 if __name__ == "__main__":
     app.run(debug='True')

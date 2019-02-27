@@ -8,14 +8,15 @@
     <link rel="stylesheet" type="text/css"  href="{{url_for('static',filename='style.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script
-			  src="https://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			  crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% block scripts %}{% endblock %}
 </head>
 
 <body>
@@ -49,8 +50,8 @@
           <!--Nav bar-->
           <ul class="right hide-on-med-and-down">
               <li><a href="http://openmindsclub.net/" class="waves-effect">home</a></li>
-              <li><a href="#">challenges</a></li>
-              <li><a href="#">leadbord</a></li>
+              <li><a href="/challenges">challenges</a></li>
+              <li><a href="#">leaderboard</a></li>
               {% if 'username' in session %}
               <li class="userFun"><a href="#" >User</a></li>
               {% else%}
@@ -112,6 +113,5 @@ $(document).ready(function(){
   });
 </script>
 <script>
-
 </script>
 </html>
