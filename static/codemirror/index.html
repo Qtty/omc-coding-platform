@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="plugins/lib/codemirror.js"></script>
+		<link rel="stylesheet" type="text/css" href="plugins/lib/codemirror.css">
+		<link rel="stylesheet" type="text/css" href="plugins/theme/blackboard.css">
+		<script src="plugins/mode/javascript/javascript.js"></script>
+		<script src="plugins/mode/python/python.js"></script>
+		<script src="plugins/addon/hint/show-hint.js"></script>
+		<script src="plugins/addon/hint/css-hint.js"></script>
+		<script src="plugins/addon/edit/closebrackets.js"></script>
+		<script src="plugins/addon/edit/matchbrackets.js"></script>
+		<link rel="stylesheet" type="text/css" href="plugins/addon/hint/show-hint.css">
+	</head>
+	<body>
+		<textarea id="code-area"></textarea>
+		<script >
+			var editor = CodeMirror.fromTextArea(document.getElementById("code-area"),{
+				mode: "python",
+				theme: "blackboard",
+				lineNumbers: true,
+				extraKeys: {"Ctrl-Space":"autocomplete"},
+				autoCloseBrackets: true,
+				matchBrackets: true
+			});
+		</script>
+	</body>
+</html>

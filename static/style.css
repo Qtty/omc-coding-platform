@@ -1,0 +1,84 @@
+.userFun
+{
+   
+}
+
+.userFun:nth-last-child(1)
+{
+    position: absolute;
+    right: 0%;
+}
+.userFun:nth-last-child(2)
+{
+    position: absolute;
+    right: 68px;
+}
+.hide-on-med-and-down
+{
+ width:100%;
+ display: flex;
+ justify-content: flex-start;
+ flex-direction: row;
+}
+nav{
+    position: fixed !important;
+    z-index: 1 !important;
+}
+
+nav ul a,nav ul a:focus::after{
+    color:gray !important;
+    font-weight: 400 !important;
+    transition-property: color,font-weight !important;
+    transition-duration: .5s !important; 
+      
+}
+
+nav ul a:hover{
+    background-color: rgba(0, 0, 0, 0) !important;
+    color:white !important;
+    font-weight: 700 !important;
+}
+
+.parallax-container {
+    height: 720px !important;
+  }
+.middleContainer
+{
+    height: 50%;
+    background-color: gray;
+    font-size: 32px;
+}
+.parallax{
+    position:static;
+  }
+.whiteCursor
+{
+    background-color: white;
+height: 42px;
+width: 21px;
+display: inline-block;
+transition : opacity;
+opacity: 1;
+animation: hey 1.5s   infinite ;
+}
+@keyframes hey
+{
+    0% {opacity: 1;}
+    50% {opacity:0;}
+    100% {opacity: 1;}
+
+}
+.formulaire
+{
+    text-align: center;
+    margin-top: 1.5% !important;
+    padding:1%;
+    height: 40% !important;
+    
+}
+.modal {
+     width: 100% !important ;
+    height: 90% !important ; 
+    max-height: 100% !important;
+    position: absolute ; 
+    }  

@@ -1,0 +1,28 @@
+{%macro form(dico)%}
+    <div class="row formulaire">
+   
+    <div class="row">
+    {%for inp in dico%}
+        {%if inp in ["password","confirm password"]%}
+            <div class="input-field col s6">
+                    <input type="password" name="{{inp}}" id="" class="validate"><label for={{inp}}>{{inp}}</label>
+
+        {%elif inp == "matricule" %}
+            <div class="input-field col s12">
+                    <input type="number" name="{{inp}}" id="" class="validate"><label for={{inp}}>{{inp}}</label>
+         {%else %}  
+                {% if inp in ["First name","Last name"] %}
+                <div class="input-field col s6">
+                        <input type='text' name="{{inp}}" id="" class="validate"><label for={{inp}}>{{inp}}</label>
+                {%else%}
+                <div class="input-field col s12">
+                        <input type='text' name="{{inp}}" id="{{inp}}" class="validate"><label for={{inp}}>{{inp}}</label>
+                {%endif%}
+            
+        {%endif%}
+        </div>
+    {%endfor%}
+</div>
+    
+</div>
+{%endmacro%}

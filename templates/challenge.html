@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% set syntax=["python","javascript","ruby","jinja2","css"] %}
+{% set theme=["codemirror","base16-dark","base16-light"] %}
+
+{% block scripts %}
+	{% for i in ['plugins/lib/codemirror.css',"plugins/addon/hint/show-hint.css"] %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='codemirror/'+i) }}">
+	{% endfor %}
+	{% for i in theme %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='codemirror/plugins/theme/{}.css'.format(i)) }}">
+	{% endfor %}
+	{% for i in ["plugins/lib/codemirror.js","plugins/addon/hint/show-hint.js","plugins/addon/hint/css-hint.js","plugins/addon/edit/closebrackets.js","plugins/addon/edit/matchbrackets.js"] %}
+		<script src="{{ url_for('static',filename='codemirror/'+i) }}"></script>
+	{% endfor %}
+	{% for i in syntax %}
+		<script src="{{ url_for('static',filename='codemirror/plugins/mode/{}/{}.js'.format(i,i)) }}"></script>
+	{% endfor %}
+{% endblock %}
+
+{% block middleContainer %}
+	<form action="" method="post">
+		<textarea id="code-area" name="code"></textarea>
+		<input type="submit" value="Submit" />
+	</form>
+	{% if res != None %}
+		<p>{{ res }}</p>
+	{% endif %}
+	{% set d={"theme":theme,"mode":syntax} %}
+	{% for i in d %}
+		<div class="input-field col s12">
+			<select id="select{{ i }}" onchange="changeoption('{{ i }}','select{{ i }}');">
+			{% for j in d[i] %}
+				<option value="{{ j }}">{{ j }}</option>
+			{% endfor %}
+			</select>
+			<label for="select">Select a {{ i }}</label>
+		</div>
+	{% endfor %}
+	<script type="text/javascript">
+
+			var editor = CodeMirror.fromTextArea(document.getElementById("code-area"),{
+				mode: "python",
+				theme: "base16-dark",
+				lineNumbers: true,
+				extraKeys: {"Ctrl-Space":"autocomplete"},
+				autoCloseBrackets: true,
+				matchBrackets: true
+			});
+
+			function changeoption(option,zone)
+			{
+				var zone = document.getElementById(zone);
+				editor.setOption(option,zone.value);
+			}
+			
+		</script>
+{% endblock %}
